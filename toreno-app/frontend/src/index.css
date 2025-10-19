@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-toreno-green: #8BC34A;
+  --color-toreno-dark: #689F38;
+}
 
 * {
   margin: 0;

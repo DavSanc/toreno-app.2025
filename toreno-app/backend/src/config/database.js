@@ -7,18 +7,8 @@ const { Pool } = pg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-// Verificar conexión
-pool.on('connect', () => {
-  console.log('✅ Conectado a PostgreSQL (Supabase)');
-});
-
-pool.on('error', (err) => {
-  console.error('❌ Error en la conexión:', err);
+  ssl: { rejectUnauthorized: false },
+  connectionTimeoutMillis: 5000,
 });
 
 export default pool;

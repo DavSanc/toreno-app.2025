@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import pool from './config/database.js';
-import authRoutes from './routes/auth.js';
-import productRoutes from './routes/products.js';
-import orderRoutes from './routes/orders.js';
+//import pool from './config/database.js';
+//import authRoutes from './routes/auth.js';
+//import productRoutes from './routes/products.js';
+//import orderRoutes from './routes/orders.js';
 
 dotenv.config();
 
@@ -25,10 +25,19 @@ app.get('/', (req, res) => {
     version: '1.0.0'
   });
 });
+app.get('/api/products', (req, res) => {
+  res.json({
+    products: [
+      {id: 1, name: "Torta Cumpleaños", description: "Chocolate", price: "85000", category_name: "Cumpleaños"},
+      {id: 2, name: "Torta Bodas", description: "Elegante", price: "350000", category_name: "Bodas"},
+      {id: 3, name: "Cupcakes", description: "Personalizados", price: "45000", category_name: "Especial"}
+    ]
+  });
+});
 
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
+//app.use('/api/auth', authRoutes);
+//app.use('/api/products', productRoutes);
+//app.use('/api/orders', orderRoutes);
 
 app.use((err, req, res, next) => {
   console.error('❌ Error:', err.stack);
